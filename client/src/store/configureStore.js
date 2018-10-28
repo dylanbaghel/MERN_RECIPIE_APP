@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import recipiesReducer from './../reducers/recipiesReducer';
 import authReducer from './../reducers/authReducer';
 import loadingReducer from './../reducers/loadingReducer';
+import filterReducer from './../reducers/filterReducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -11,7 +12,8 @@ const configureStore = () => {
     const store = createStore(combineReducers({
         recipies: recipiesReducer,
         auth: authReducer,
-        isLoading: loadingReducer
+        isLoading: loadingReducer,
+        filters: filterReducer
     }), composeEnhancers(
         applyMiddleware(thunk)
     ));
