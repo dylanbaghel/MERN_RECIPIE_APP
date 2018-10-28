@@ -15,7 +15,7 @@ const LoginForm = ({
     return (
         <div className="container">
             <div className="row">
-                <div className="col-md-10">
+                <div className="col-md-10 mx-auto">
                     {errors.error && <p>{errors.error}</p>}
                     <div className="card">
                         <div className="card-header">
