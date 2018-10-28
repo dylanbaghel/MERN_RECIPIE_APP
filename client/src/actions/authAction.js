@@ -4,6 +4,7 @@ import {
     SET_CURRENT_USER,
     REMOVE_CURRENT_USER
 } from './types';
+import { BASE_URL } from './../config';
 
 import { setAuthToken } from './../utils/setAuthToken';
 import { startSetRecipies, setRecipies } from './recipiesAction';
@@ -16,7 +17,7 @@ export const setCurrentUser = (user) => {
 };
 
 export const startLogin = (user) => dispatch => {
-    return axios.post('http://localhost:4100/users/login', user)
+    return axios.post(`${BASE_URL}/users/login`, user)
         .then((res) => {
             const token = res.headers['x-auth'];
             dispatch(setCurrentUser(res.data.user));
@@ -32,7 +33,7 @@ export const startLogin = (user) => dispatch => {
 };
 
 export const startRegister = (user) => dispatch => {
-    return axios.post('http://localhost:4100/users', user)
+    return axios.post(`${BASE_URL}/users`, user)
         .then((res) => {
             const token = res.headers['x-auth'];
             dispatch(setCurrentUser(res.data.user));
@@ -52,7 +53,7 @@ export const removeCurrnetUser = () => {
 };
 
 export const startLogout = () => dispatch => {
-    axios.delete('http://localhost:4100/users/logout')
+    axios.delete(`${BASE_URL}/users/logout`)
         .then((res) => {
             setAuthToken(false);
             console.log(res);

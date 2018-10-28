@@ -7,12 +7,14 @@ import {
     SET_RECIPIES
 } from './types';
 
+import { BASE_URL } from './../config';
+
 import { setLoading } from './loadingAction';
 
 
 export const startAddRecipie = (recipie) => dispatch => {
     dispatch(setLoading(true));
-    axios.post('http://localhost:4100/recipies', recipie)
+    axios.post(`${BASE_URL}/recipies`, recipie)
         .then((res) => {
             console.log(res.data);
             dispatch(addRecipie(res.data.recipie));
@@ -34,7 +36,7 @@ export const addRecipie = (recipie = {}) => {
 
 export const startEditRecipie = (_id, updates) => dispatch => {
     dispatch(setLoading(true));
-    axios.put(`http://localhost:4100/recipies/${_id}`, updates)
+    axios.put(`${BASE_URL}/recipies/${_id}`, updates)
         .then((res) => {
             console.log(res.data);
             dispatch(editRecipie(res.data.recipie._id, res.data.recipie));
@@ -54,7 +56,7 @@ export const editRecipie = (_id, updates) => {
 
 export const startRemoveRecipie = (_id) => dispatch => {
     dispatch(setLoading(true));
-    axios.delete(`http://localhost:4100/recipies/${_id}`)
+    axios.delete(`${BASE_URL}/recipies/${_id}`)
         .then((res) => {
             // console.log(res.data);
             dispatch(removeRecipie(res.data.recipie._id));
@@ -73,7 +75,7 @@ export const removeRecipie = (_id) => {
 
 export const startSetRecipies = () => dispatch => {
     dispatch(setLoading(true));
-    axios.get('http://localhost:4100/recipies')
+    axios.get(`${BASE_URL}/recipies`)
         .then((res) => {
             console.log(res.data.recipies);
             dispatch(setRecipies(res.data.recipies));

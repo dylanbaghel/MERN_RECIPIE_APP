@@ -26,8 +26,6 @@ app.get('/', (req, res) => {
 app.use('/users', users);
 app.use('/recipies', recipies);
 
-console.log();
-
 //MERN APP SETUP FOR PRODUCTION
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
