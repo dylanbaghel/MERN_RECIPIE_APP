@@ -8,6 +8,7 @@ import { BASE_URL } from './../config';
 
 import { setAuthToken } from './../utils/setAuthToken';
 import { startSetRecipies, setRecipies } from './recipiesAction';
+import { setLoading } from './loadingAction';
 
 export const setCurrentUser = (user) => {
     return {
@@ -17,6 +18,7 @@ export const setCurrentUser = (user) => {
 };
 
 export const startLogin = (user) => dispatch => {
+    dispatch(setLoading(true));
     return axios.post(`${BASE_URL}/users/login`, user)
         .then((res) => {
             const token = res.headers['x-auth'];
@@ -24,6 +26,7 @@ export const startLogin = (user) => dispatch => {
             setAuthToken(token);
             localStorage.setItem('recipieToken', token);
             dispatch(startSetRecipies());
+            dispatch(setLoading(false));
             return Promise.resolve('got');
         })
         .catch((e) => {
@@ -33,12 +36,14 @@ export const startLogin = (user) => dispatch => {
 };
 
 export const startRegister = (user) => dispatch => {
+    dispatch(setLoading(true));
     return axios.post(`${BASE_URL}/users`, user)
         .then((res) => {
             const token = res.headers['x-auth'];
             dispatch(setCurrentUser(res.data.user));
             setAuthToken(token);
             localStorage.setItem('recipieToken', token);
+            dispatch(setLoading(false));
             return Promise.resolve('got');
         }).catch((e) => {
             console.log(e.response);
@@ -53,6 +58,7 @@ export const removeCurrnetUser = () => {
 };
 
 export const startLogout = () => dispatch => {
+    dispatch(setLoading(true));
     axios.delete(`${BASE_URL}/users/logout`)
         .then((res) => {
             setAuthToken(false);
@@ -60,6 +66,7 @@ export const startLogout = () => dispatch => {
             dispatch(removeCurrnetUser());
             localStorage.removeItem('recipieToken');
             dispatch(setRecipies([]));
+            dispatch(setLoading(false));
         })
         .catch((e) => {
             console.log(e.response);
