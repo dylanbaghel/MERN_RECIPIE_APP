@@ -39,7 +39,7 @@ const Header = ({
     );
 
     return (
-        <div className="navbar navbar-expand navbar-dark bg-dark mb-5">
+        <div className="navbar navbar-expand-sm navbar-dark bg-dark mb-5">
             <div className="container">
                 <img src={preloader} className="img-fluid brand-image" alt="brand-image"></img>
                 <Link to="/"><h2 className="navbar-brand">Recipie App</h2></Link>
