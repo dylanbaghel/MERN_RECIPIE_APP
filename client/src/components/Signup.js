@@ -49,7 +49,7 @@ const SignupForm = ({
                                 </div>
                                 <div className="form-group">
                                     <Field 
-                                        type="text"
+                                        type="password"
                                         name="password"
                                         placeholder="Password"
                                         autoComplete="off"

@@ -31,12 +31,13 @@ const LoginForm = ({
                                         className={classnames('form-control', {
                                             'is-invalid': touched.email && errors.email
                                         })}
+                                        autoComplete="off"
                                     />
                                     <div className="invalid-feedback">{errors.email}</div>
                                 </div>
                                 <div className="form-group">
                                     <Field
-                                        type="text"
+                                        type="password"
                                         name="password"
                                         placeholder="Password"
                                         className={classnames('form-control', {
