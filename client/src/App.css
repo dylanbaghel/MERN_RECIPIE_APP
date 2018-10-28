@@ -10,3 +10,14 @@ html, body {
     align-items: center;
     height: 90vh;
 }
+
+.brand-image {
+    width: 64px;
+    height: 64px;
+    color: white;
+
+}
+
+.s {
+    color: green;
+}

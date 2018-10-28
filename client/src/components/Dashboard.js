@@ -2,10 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import RecipieCard from './RecipieCard';
-import preloader from './../gifs/preloader.gif';
 
 const Dashboard = (props) => {
-    const { recipies, isLoading, user } = props;
+    const { recipies, user } = props;
 
     const renderRecipies = (
         <React.Fragment>
@@ -30,17 +29,9 @@ const Dashboard = (props) => {
         </React.Fragment>
     );
 
-    const loadingScreen = (
-        <div className="preloader">
-            <img src={preloader} alt="Loading...." />
-        </div>
-    );
-
     return (
         <div className="container">
-            {
-                isLoading ? loadingScreen : renderRecipies
-            }
+            {renderRecipies}
         </div>
     );
 }
@@ -48,7 +39,6 @@ const Dashboard = (props) => {
 const mapStateToProps = (state) => {
     return {
         recipies: state.recipies,
-        isLoading: state.isLoading,
         user: state.auth
     };
 };

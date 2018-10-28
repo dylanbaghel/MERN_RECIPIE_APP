@@ -13,7 +13,7 @@ const EditRecipie = (props) => {
                     <RecipieForm
                         onRecipieFormSubmit={(updates) => {
                             startEditRecipie(recipie._id, updates);
-                            history.replace('/dashboard');
+                            history.replace(`/recipie/${recipie._id}`);
                         }}
                         recipie={recipie}
                     />

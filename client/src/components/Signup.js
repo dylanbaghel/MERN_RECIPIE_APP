@@ -3,6 +3,7 @@ import { withFormik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { startRegister } from './../actions/authAction';
 
@@ -17,6 +18,9 @@ const SignupForm = ({
                 <div className="col-md-10">
                     {errors.error && <p>{errors.error}</p>}
                     <div className="card">
+                        <div className="card-header">
+                            Signup
+                        </div>
                         <div className="card-body">
                             <Form>
                                 <div className="form-group">
@@ -55,9 +59,17 @@ const SignupForm = ({
                                     />
                                     <div className="invalid-feedback">{errors.password}</div>
                                 </div>
+                                <div className="mb-2">
+                                    <Link
+                                        to="/login"
+                                        className="text-secondary"
+                                    >
+                                        Already Have An Account?
+                                    </Link>
+                                </div>
                                 <button 
                                     type="submit" 
-                                    className="btn btn-primary"
+                                    className="btn btn-dark"
                                     disabled={isSubmitting}
                                 >Register
                                 </button>

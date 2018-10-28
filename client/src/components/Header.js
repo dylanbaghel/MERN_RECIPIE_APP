@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { startLogout } from './../actions/authAction';
+import preloader from './../gifs/brand.svg';
 
 const Header = ({
     isAuthenticated,
@@ -40,6 +41,7 @@ const Header = ({
     return (
         <div className="navbar navbar-expand navbar-dark bg-dark mb-5">
             <div className="container">
+                <img src={preloader} className="img-fluid brand-image" alt="brand-image"></img>
                 <Link to="/"><h2 className="navbar-brand">Recipie App</h2></Link>
                 <ul className="navbar-nav ml-auto">
                     {isAuthenticated ? privateLinks : publicLinks}

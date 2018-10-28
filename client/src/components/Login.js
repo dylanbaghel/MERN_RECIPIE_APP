@@ -3,6 +3,7 @@ import { withFormik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { startLogin } from './../actions/authAction';
 
@@ -17,6 +18,9 @@ const LoginForm = ({
                 <div className="col-md-10">
                     {errors.error && <p>{errors.error}</p>}
                     <div className="card">
+                        <div className="card-header">
+                            Login
+                        </div>
                         <div className="card-body">
                             <Form>
                                 <div className="form-group">
@@ -41,10 +45,18 @@ const LoginForm = ({
                                     />
                                     <div className="invalid-feedback">{errors.password}</div>
                                 </div>
+                                <div className="mb-2">
+                                    <Link
+                                        to="/signup"
+                                        className="text-secondary"
+                                    >
+                                        No Account? Create One
+                                    </Link>
+                                </div>
                                 <button
                                     disabled={isSubmitting}
                                     type="submit"
-                                    className="btn btn-primary"
+                                    className="btn btn-dark"
                                 >Login
                                 </button>
                             </Form>
