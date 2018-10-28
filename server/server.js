@@ -17,10 +17,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({
     exposedHeaders: ['Content-Length', 'x-auth']
 }));
-//Routes
-app.get('/', (req, res) => {
-    res.json({ result: "Working" });
-});
 
 //ROUTES SETUP
 app.use('/users', users);
