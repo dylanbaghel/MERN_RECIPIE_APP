@@ -18,7 +18,6 @@ export const setCurrentUser = (user) => {
 };
 
 export const startLogin = (user) => dispatch => {
-    dispatch(setLoading(true));
     return axios.post(`${BASE_URL}/users/login`, user)
         .then((res) => {
             const token = res.headers['x-auth'];
@@ -26,28 +25,23 @@ export const startLogin = (user) => dispatch => {
             setAuthToken(token);
             localStorage.setItem('recipieToken', token);
             dispatch(startSetRecipies());
-            dispatch(setLoading(false));
             return Promise.resolve('got');
         })
         .catch((e) => {
-            dispatch(setLoading(false));
             console.log(e.response);
             return Promise.reject(e.response);
         });
 };
 
 export const startRegister = (user) => dispatch => {
-    dispatch(setLoading(true));
     return axios.post(`${BASE_URL}/users`, user)
         .then((res) => {
             const token = res.headers['x-auth'];
             dispatch(setCurrentUser(res.data.user));
             setAuthToken(token);
             localStorage.setItem('recipieToken', token);
-            dispatch(setLoading(false));
             return Promise.resolve('got');
         }).catch((e) => {
-            dispatch(setLoading(false));
             console.log(e.response);
             return Promise.reject(e.response);
         });
