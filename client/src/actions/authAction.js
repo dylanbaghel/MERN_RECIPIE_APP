@@ -30,6 +30,7 @@ export const startLogin = (user) => dispatch => {
             return Promise.resolve('got');
         })
         .catch((e) => {
+            dispatch(setLoading(false));
             console.log(e.response);
             return Promise.reject(e.response);
         });
@@ -46,6 +47,7 @@ export const startRegister = (user) => dispatch => {
             dispatch(setLoading(false));
             return Promise.resolve('got');
         }).catch((e) => {
+            dispatch(setLoading(false));
             console.log(e.response);
             return Promise.reject(e.response);
         });
@@ -69,6 +71,7 @@ export const startLogout = () => dispatch => {
             dispatch(setLoading(false));
         })
         .catch((e) => {
+            dispatch(setLoading(false));
             console.log(e.response);
         });
 };
